@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-notice',
   imports: [],
-  templateUrl: './notice.html',
-  styleUrl: './notice.css',
+  templateUrl: './news.html',
+  styleUrl: './news.css',
 })
-export class Notice {
+export class News {
 
 }

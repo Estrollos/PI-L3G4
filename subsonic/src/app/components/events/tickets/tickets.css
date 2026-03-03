@@ -1,0 +1,23 @@
+.separator{
+    position: absolute;
+    top: 0;
+    right:49rem;
+    border-left: 2px solid red;
+    height: 100%;
+}
+
+.event-container{
+  display: flex;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 50px;
+  justify-content: center;
+  padding: 10px 100px;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.col{
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+}

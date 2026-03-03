@@ -16,6 +16,7 @@ ul {
   gap: 2rem;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 a {
@@ -32,6 +33,7 @@ a:hover {
   left: 2rem;
   min-width: 2em;
   min-height: 2em;
+  cursor: pointer;
 }
 
 .my-account {
