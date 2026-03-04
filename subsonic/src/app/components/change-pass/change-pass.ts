@@ -3,15 +3,15 @@ import { Router } from '@angular/router';
 import { RouterConstants } from '../../constants/router-constants';
 
 @Component({
-  selector: 'app-recover-pass',
+  selector: 'app-change-pass',
   imports: [],
-  templateUrl: './recover-pass.html',
-  styleUrl: './recover-pass.css',
+  templateUrl: './change-pass.html',
+  styleUrl: './change-pass.css',
 })
-export class RecoverPass {
+export class ChangePass {
   constructor(private router: Router) {}
 
-  navToChangePass(): void {
-    this.router.navigate([RouterConstants.CHANGE_PASSWORD]);
+  navToLogin(): void {
+    this.router.navigate([RouterConstants.LOGIN]);
   }
 }

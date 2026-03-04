@@ -1,0 +1,15 @@
+<h1>My Tickets</h1>
+<div class="tabs">
+<input type="radio" id="NextEvents" name="option" value="NextEvents" [(ngModel)]="option">
+<label for="NextEvents">NextEvents</label>
+
+<input type="radio" id="PastEvents" name="option" value="PastEvents" [(ngModel)]="option">
+<label for="PastEvents">PastEvents</label>
+</div>
+
+@if (option === 'NextEvents') {
+  <button><a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf">Download</a></button>
+}
+@else if (option === 'PastEvents') {
+
+}

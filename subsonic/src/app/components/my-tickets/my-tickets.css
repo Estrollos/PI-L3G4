@@ -1,0 +1,27 @@
+button{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  padding: 0 1.5rem;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: black;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+input[type="radio"]:checked + label {
+  border-bottom: 3px solid black;
+}

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Event } from '../../../models/event';
 import { NgOptimizedImage } from "@angular/common";
 import { Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { RouterConstants } from '../../../constants/router-constants';
 
 @Component({
   selector: 'app-tickets',
@@ -13,6 +15,13 @@ import { Input } from '@angular/core';
 export class Tickets {
   @Input() day: string = "";
   @Input() hour: string= "";
+
+  constructor(private router: Router) {}
+
+  navToTicket() : void{
+    this.router.navigate([RouterConstants.TICKET]);
+  }
+
   events: Event[] = [
     { date: 'Monday', hour: 'Morning', stage: 'Main Stage' },
     { date: 'Monday', hour: 'Afternoon', stage: 'Main Stage' },

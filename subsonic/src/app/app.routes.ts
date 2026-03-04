@@ -4,8 +4,17 @@ import { Login } from './components/login/login';
 import { Events } from './components/events/events';
 import { Store } from './components/store/store';
 import { FAQ } from './components/faq/faq';
+import { News } from './components/news/news';
+import { Ticket } from './components/ticket/ticket';
 import { RecoverPass } from './components/recover-pass/recover-pass';
 import { Register } from './components/register/register';
+import { ChangePass } from './components/change-pass/change-pass';
+import { Settings } from './components/settings/settings';
+import { MyTickets } from './components/my-tickets/my-tickets';
+import { Cart } from './components/cart/cart';
+import { Product } from './components/product/product';
+import { Spaces } from './components/spaces/spaces';
+import { StallInfo } from './components/stall-info/stall-info';
 import { RouterConstants } from './constants/router-constants';
 
 export const routes: Routes = [
@@ -14,6 +23,15 @@ export const routes: Routes = [
   { path: RouterConstants.EVENTS, component: Events },
   { path: RouterConstants.STORE, component: Store },
   { path: RouterConstants.FAQ, component: FAQ },
-  { path : RouterConstants.FORGOT_PASSWORD, component: RecoverPass },
-  { path : RouterConstants.CREATE_ACCOUNT, component: Register },
+  { path: RouterConstants.NEWS, component: News },
+  { path: RouterConstants.TICKET, component: Ticket },
+  { path: RouterConstants.FORGOT_PASSWORD, component: RecoverPass },
+  { path: RouterConstants.CREATE_ACCOUNT, component: Register },
+  { path: RouterConstants.CHANGE_PASSWORD, component: ChangePass },
+  { path: RouterConstants.SETTINGS, component: Settings },
+  { path: RouterConstants.MY_TICKETS, component: MyTickets },
+  { path: RouterConstants.CART, component: Cart },
+  { path: RouterConstants.PRODUCT, component: Product },
+  { path: RouterConstants.SPACES, component: Spaces },
+  { path: RouterConstants.STALL_INFO, component: StallInfo }
 ];

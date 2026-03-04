@@ -1,0 +1,23 @@
+<h1>Spaces</h1>
+  <h2>DAY</h2>
+  <input type="radio" id="Monday" name="day" value="Monday" [(ngModel)]="day" (click)="toggleDay('Monday')">
+  <label for="Monday">Monday</label>
+
+  <input type="radio" id="Tuesday" name="day" value="Tuesday" [(ngModel)]="day" (click)="toggleDay('Tuesday')">
+  <label for="Tuesday">Tuesday</label>
+
+  <input type="radio" id="Wednesday" name="day" value="Wednesday" [(ngModel)]="day" (click)="toggleDay('Wednesday')">
+  <label for="Wednesday">Wednesday</label>
+
+  <h2>STAGE</h2>
+  <input type="radio" id="Main" name="stage" value="Main" [(ngModel)]="stage" (click)="toggleStage('Main')">
+  <label for="Main">Main</label>
+
+  <input type="radio" id="Second" name="stage" value="Second" [(ngModel)]="stage" (click)="toggleStage('Second')">
+  <label for="Second">Second</label>
+
+  <input type="radio" id="Third" name="stage" value="Third" [(ngModel)]="stage" (click)="toggleStage('Third')">
+  <label for="Third">Third</label>
+
+  <h2>Price: 100€</h2>
+  <button (click)="navToLogin()">RENT</button>

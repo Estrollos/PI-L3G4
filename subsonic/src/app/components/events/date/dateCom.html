@@ -1,0 +1,19 @@
+  <h1>DAY</h1>
+  <input type="radio" id="Monday" name="day" value="Monday" [(ngModel)]="day" (ngModelChange)="sendDay('Monday')" (click)="toggleDay('Monday')">
+  <label for="Monday">Monday</label>
+
+  <input type="radio" id="Tuesday" name="day" value="Tuesday" [(ngModel)]="day" (ngModelChange)="sendDay('Tuesday')" (click)="toggleDay('Tuesday')">
+  <label for="Tuesday">Tuesday</label>
+
+  <input type="radio" id="Wednesday" name="day" value="Wednesday" [(ngModel)]="day" (ngModelChange)="sendDay('Wednesday')" (click)="toggleDay('Wednesday')">
+  <label for="Wednesday">Wednesday</label>
+
+  <h1>HOUR</h1>
+  <input type="radio" id="Morning" name="hour" value="Morning" [(ngModel)]="hour" (ngModelChange)="sendHour('Morning')" (click)="toggleHour('Morning')">
+  <label for="Morning">Morning</label>
+
+  <input type="radio" id="Afternoon" name="hour" value="Afternoon" [(ngModel)]="hour" (ngModelChange)="sendHour('Afternoon')" (click)="toggleHour('Afternoon')">
+  <label for="Afternoon">Afternoon</label>
+
+  <input type="radio" id="Night" name="hour" value="Night" [(ngModel)]="hour" (ngModelChange)="sendHour('Night')" (click)="toggleHour('Night')">
+  <label for="Night">Night</label>

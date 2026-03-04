@@ -1,24 +1,5 @@
 <div class="left">
-  <h1>DAY</h1>
-  <input type="radio" id="Monday" name="day" value="Monday" [(ngModel)]="selectedDay">
-  <label for="Monday">Monday</label>
-
-  <input type="radio" id="Tuesday" name="day" value="Tuesday" [(ngModel)]="selectedDay">
-  <label for="Tuesday">Tuesday</label>
-
-  <input type="radio" id="Wednesday" name="day" value="Wednesday" [(ngModel)]="selectedDay">
-  <label for="Wednesday">Wednesday</label>
-
-  <h1>HOUR</h1>
-  <input type="radio" id="Morning" name="hour" value="Morning" [(ngModel)]="selectedHour">
-  <label for="Morning">Morning</label>
-
-  <input type="radio" id="Afternoon" name="hour" value="Afternoon" [(ngModel)]="selectedHour">
-  <label for="Afternoon">Afternoon</label>
-
-  <input type="radio" id="Night" name="hour" value="Night" [(ngModel)]="selectedHour">
-  <label for="Night">Night</label>
-
+  <app-dateCom (selectedDay)="receiveDay($event)" (selectedHour)="receiveHour($event)"/>
 </div>
 
 <div class="right">

@@ -1,0 +1,20 @@
+<h1>TICKET</h1>
+<h2>Senary 1</h2>
+<h2>Date</h2>
+<h2>Descripcion</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugit voluptate sint quidem obcaecati accusamus officiis dolore corrupti, dolor sit totam molestias eos asperiores ratione fugiat consequatur est error ex.</p>
+<h2>Artist</h2>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem fugit excepturi corporis vitae officiis possimus, expedita aliquid id modi ab doloribus iusto numquam voluptatibus hic dolor ullam deleniti error repellendus?</p>
+<h2>Stalls</h2>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate. Doloribus, quisquam. Voluptas, voluptate. Doloribus, quisquam.</p>
+
+<div class="right">
+  <div class="event-container">
+    <p>Nº Tickets</p>
+    <button (click)="plus()" style="margin-left: 10px; margin-right: 10px;">+</button>
+    <label>{{ quantity }}</label>
+    <button (click)="minus()" style="margin-left: 10px; margin-right: 10px;">-</button>
+    <p>Price: {{ price }}€</p>
+    <button style="width: 5rem; height: 2rem;" (click)="navToLogin()"><a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf">Buy</a></button>
+  </div>
+</div>
