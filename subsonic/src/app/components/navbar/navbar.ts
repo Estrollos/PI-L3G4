@@ -11,6 +11,22 @@ import { NgOptimizedImage } from "@angular/common";
 })
 export class NavbarComponent {
 
+  isOpen = false;
+  isSubmenuOpen  = false;
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  toggleSubmenu() {
+    this.isSubmenuOpen = !this.isSubmenuOpen;
+  }
+
+  selectOption(option: string) {
+    console.log(option);
+    this.isOpen = false;
+  }
+
   constructor(private router: Router) {}
 
   navToLogin(): void {
@@ -31,6 +47,30 @@ export class NavbarComponent {
 
   navToHome(): void {
     this.router.navigate([RouterConstants.HOME]);
+  }
+
+  navToSetting(): void {
+    this.router.navigate([RouterConstants.SETTINGS]);
+  }
+
+  navToServices(): void {
+    this.router.navigate([RouterConstants.SETTINGS]);
+  }
+
+  navToMyCart(): void {
+    this.router.navigate([RouterConstants.CART]);
+  }
+
+  navToMyTickets(): void {
+    this.router.navigate([RouterConstants.MY_TICKETS]);
+  }
+
+  navToSpaces(): void {
+    this.router.navigate([RouterConstants.SPACES]);
+  }
+
+  navToStallInfo(): void {
+    this.router.navigate([RouterConstants.STALL_INFO]);
   }
 }
 

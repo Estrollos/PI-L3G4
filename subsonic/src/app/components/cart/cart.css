@@ -1,0 +1,28 @@
+:host{
+  position: absolute;
+  left: 2rem;
+}
+
+.products-row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  grid-template-rows: repeat(3, auto);   /* 3 filas */
+  gap: 50px;
+}
+
+.product{
+  margin-top: 2rem;
+}
+
+.price{
+  margin-top: -1rem;
+  color:grey
+}
+
+.text{
+  font-size: 20px;
+}
+
+button{
+  width: 300px;
+}

@@ -9,5 +9,26 @@
     <div class="my-account">
       <li><a (click)="navToLogin()">MY ACCOUNT</a></li>
     </div>
+      <li><div class="dropdown">
+        <span (click)="toggleMenu()">ACCOUNT ▾</span>
+        @if (isOpen) {
+        <div class="menu">
+          <p>Javier</p>
+            <p (click)="selectOption('Settings')">Settings</p>
+            <div class="submenu-container">
+              <p (click)="toggleSubmenu()">Services ▸</p>
+              @if (isSubmenuOpen) {
+                <div class="submenu">
+                  <p (click)="selectOption('Spaces')" (click)="navToSpaces()">Spaces</p>
+                  <p (click)="selectOption('StallInfo')" (click)="navToStallInfo()">Stall Info</p>
+                </div>
+              }
+  </div>
+          <p (click)="selectOption('MyCart')" (click)="navToMyCart()">My-Cart</p>
+          <p (click)="selectOption('MyTickets')" (click)="navToMyTickets()">My-Tickets</p>
+          <p>Log-Out</p>
+        </div>
+        }
+    </div></li>
   </ul>
 </nav>

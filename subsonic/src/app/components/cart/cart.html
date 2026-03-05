@@ -1,1 +1,15 @@
-<p>cart works!</p>
+<h1>My Cart</h1>
+<div class="products-row">
+  @for(product of products; track product.name + product.image + product.price){
+    <div class="product">
+      <img [ngSrc]="product.image" width="300" height="400">
+      <div class="text">
+        <p>{{product.name}}</p>
+        <div class="price"><p>{{product.price}}€</p></div>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="text"><p>Total Price: 60€</p></div>
+<button>Buy</button>

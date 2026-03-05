@@ -1,1 +1,35 @@
-<p>product works!</p>
+<div class="left">
+  <img ngSrc="/camisaL.webp" width="500" height="600">
+  <img ngSrc="/camisaC.webp" width="500" height="600">
+  <div class="front">
+    <img ngSrc="/camisaL_frente.webp" width="500" height="600">
+    <img ngSrc="/camisaC_frente.jpg" width="500" height="600">
+  </div>
+  <h2>Similar Products</h2>
+</div>
+
+<div class="right">
+  <h2>T-Shirt</h2>
+  <p>20€</p>
+  <p>Description</p>
+  <p>Color</p>
+  <p>Size</p>
+  <input type="radio" id="S" name="size" value="S" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleDay('S')">
+  <label for="S">S</label>
+
+  <input type="radio" id="M" name="size" value="M" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleDay('M')">
+  <label for="M">M</label>
+
+  <input type="radio" id="L" name="size" value="L" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleDay('L')">
+  <label for="L">L</label>
+
+  <input type="radio" id="XL" name="size" value="XL" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleDay('XL')">
+  <label for="XL">XL</label>
+
+  <input type="radio" id="XXL" name="size" value="XXL" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleDay('XLL')">
+  <label for="XXL">XXL</label>
+
+  <p></p>
+  <button>Add to Cart</button>
+  <p>Delivey time 2-4 business days</p>
+</div>

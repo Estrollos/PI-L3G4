@@ -1,0 +1,41 @@
+img{
+  margin-right: 2rem;
+  margin-top: 2rem;
+}
+
+.left{
+  position: absolute;
+  left: 5rem;
+}
+
+.right{
+  position: absolute;
+  right: 10rem;
+  top:0;
+  margin-top: 5rem;
+}
+
+button{
+  background-color: black;
+  color: white;
+  width: 200px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+input[type="radio"]:checked + label {
+  background-color: grey;
+  color: white;
+  border-color: grey;
+}
+

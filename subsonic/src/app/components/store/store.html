@@ -1,1 +1,15 @@
-<p>store works!</p>
+<h1>Tienda</h1>
+
+<button class="filter-button"><mat-icon>tune</mat-icon>FILTER</button>
+<div class="products-row">
+  @for(product of products; track product.name + product.image + product.price){
+    <div class="product">
+      <img [ngSrc]="product.image" width="300" height="400" (click)="navToProduct()">
+      <div class="text">
+        <p>{{product.name}}</p>
+        <div class="price"><p>{{product.price}}€</p></div>
+      </div>
+      <button class="buy-button" (click)="navToProduct()">Buy</button>
+    </div>
+  }
+</div>
