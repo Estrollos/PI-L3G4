@@ -1,9 +1,141 @@
-  h1 {
+h1 {
     color: black;
-    padding: 2rem;
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
   }
 
-  h2 {
-    color: red;
-    padding: 0 2rem;
+  .products-col{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding-left: 5rem;
+  }
+
+  .card {
+    width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .image-section {
+    position: relative;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .dates {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, #1a1a1a);
+  }
+
+  .month {
+    font-size: 0.65rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .day {
+    font-size: 1.2rem;
+  }
+
+  .info {
+    padding: 1rem 1.2rem;
+    background: rgba(30, 30, 30, 0.95);
+  }
+
+  .info h2 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.2rem;
+  }
+
+  .description {
+    margin: 0 0 1rem 0;
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.4;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .links a {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    color: #aaa;
+  }
+
+  .button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    color: black;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    z-index: 1;
+    text-decoration: none;
+  }
+
+  /*STORE*/
+
+  .product{
+    margin-top: 2rem;
+  }
+
+  .price{
+    margin-top: -1rem;
+    color:grey
+  }
+
+  .text{
+    font-size: 20px;
+  }
+
+  .buy-button{
+    width: 300px;
   }

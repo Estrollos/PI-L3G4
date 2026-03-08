@@ -1,20 +1,23 @@
-:host{
+h1{
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.container{
+  text-align: center;
+  border: 1px solid black;
+  width: 23rem;
+  height: 40rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 
 label, input {
-  margin-bottom: 1rem;
-  margin-right:1rem;
-}
-
-.data {
-  display: flex;
-  flex-direction: column;
-  width: 10rem;
+  margin-top: 0.5rem;
 }
 
 .supplier-options{
@@ -22,6 +25,11 @@ label, input {
   flex-direction: row;
   margin-bottom: 1rem;
 }
+
+.supplier-options input{
+  margin-left: 1rem;
+}
+
 
 .supplier-documents{
   display: flex;

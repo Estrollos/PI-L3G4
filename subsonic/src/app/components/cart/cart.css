@@ -1,13 +1,15 @@
 :host{
   position: absolute;
-  left: 2rem;
+  left: 5rem;
+  display: block;
+  padding-bottom: 1rem;
 }
 
 .products-row{
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-  grid-template-rows: repeat(3, auto);   /* 3 filas */
-  gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 10px 50px;
 }
 
 .product{

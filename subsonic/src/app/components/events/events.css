@@ -1,9 +1,11 @@
 .right{
   position: absolute;
-  right: 10rem;
+  right: 8rem;
+  top: 5rem;
 }
 
 .left{
   position: absolute;
   left: 10rem;
+  top: 5rem;
 }

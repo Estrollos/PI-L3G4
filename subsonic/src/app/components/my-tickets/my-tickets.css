@@ -1,3 +1,11 @@
+:host{
+  position: absolute;
+  left: 5rem;
+  display: block;
+  padding-bottom: 1rem;
+}
+
+
 button{
   display: flex;
   flex-direction: column;
@@ -24,4 +32,9 @@ label {
 
 input[type="radio"]:checked + label {
   border-bottom: 3px solid black;
+}
+
+a{
+  color:white;
+  text-decoration: none ;
 }

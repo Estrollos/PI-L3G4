@@ -1,10 +1,22 @@
-label, input {
-  margin-bottom: 1rem;
-  margin-right:1rem;
+h1{
+  text-align: center;
+  margin-top: 2rem;
 }
 
-.data {
+.container{
+  border: 1px solid black;
+  width: 22rem;
+  height: 29rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  width: 15rem;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+label, input, button {
+  margin-bottom: 1rem;
+  width: 10rem;
 }

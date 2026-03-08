@@ -12,11 +12,22 @@ import { RouterConstants } from '../../constants/router-constants';
 export class Spaces {
   day: string = '';
   stage: string = '';
+  message: string = '';
 
   constructor(private router: Router) {}
 
   navToLogin(): void {
     this.router.navigate([RouterConstants.HOME]);
+  }
+
+  validate(): void {
+    if (!this.day || !this.stage){
+      this.message = 'Select day and stage';
+    }
+    else{
+      this.message = '';
+      this.navToLogin();
+    }
   }
 
     toggleDay(value: string) {

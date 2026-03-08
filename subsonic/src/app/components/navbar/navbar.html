@@ -14,7 +14,7 @@
         @if (isOpen) {
         <div class="menu">
           <p>Javier</p>
-            <p (click)="selectOption('Settings')">Settings</p>
+            <p (click)="selectOption('Settings')" (click)="navToSetting()">Settings</p>
             <div class="submenu-container">
               <p (click)="toggleSubmenu()">Services ▸</p>
               @if (isSubmenuOpen) {
