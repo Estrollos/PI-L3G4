@@ -1,4 +1,4 @@
-public class News{
+public class NewsDTO{
     public string id { get; set; }
     public string titulo { get; set; }
     public string subtitulo { get; set; }

@@ -1,5 +1,5 @@
-public class stallType{
+public class stallTypeDTO{
     public int puesto_id { get; set; }
     public string tipo { get; set; }
-    public Stall puesto { get; set; }
+    public StallDTO puesto { get; set; }
 }

@@ -1,4 +1,4 @@
-public class Space{
+public class SpaceDTO{
     public int pid { get; set; }
     public string dia { get; set; }
     public string escenario { get; set; }

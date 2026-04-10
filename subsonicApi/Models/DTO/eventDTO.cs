@@ -1,4 +1,4 @@
-public class Event{
+public class EventDTO{
     public int id { get; set; }
 	public string escenario { get; set; }
 	public DateTime fecha { get; set; }
