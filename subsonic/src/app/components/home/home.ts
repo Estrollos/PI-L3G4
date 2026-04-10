@@ -21,6 +21,10 @@ export class Home {
     this.router.navigate([RouterConstants.NEWS]);
   }
 
+  navToProduct(): void{
+    this.router.navigate([RouterConstants.PRODUCT]);
+  }
+
   events = [
     { day: 'Mon', hour: 'Morn' },
     { day: 'Tues', hour: 'After'},
