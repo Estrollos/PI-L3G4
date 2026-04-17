@@ -1021,32 +1021,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\javie\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\javie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
+      "projectUniqueName": "C:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
       "projectName": "subsonicApi",
-      "projectPath": "D:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
+      "projectPath": "C:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
       "packagesPath": "C:\\Users\\javie\\.nuget\\packages\\",
-      "outputPath": "D:\\Javier\\Uni\\PI\\subsonicApi\\obj\\",
+      "outputPath": "C:\\Javier\\Uni\\PI\\subsonicApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\javie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\javie\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1065,7 +1057,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
@@ -1115,7 +1107,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -1538,8 +1530,13 @@
       "code": "NU1510",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< Updated upstream
       "message": "PackageReference Microsoft.AspNetCore.Identity will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
       "libraryId": "Microsoft.AspNetCore.Identity",
+=======
+      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: Pomelo.EntityFrameworkCore.MySql 9.0.0 requiere Microsoft.EntityFrameworkCore.Relational (>= 9.0.0 && <= 9.0.999), pero la versión Microsoft.EntityFrameworkCore.Relational 10.0.5 ya se resolvió.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Relational",
+>>>>>>> Stashed changes
       "targetGraphs": [
         "net10.0"
       ]

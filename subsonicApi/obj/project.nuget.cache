@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "yiu9T4Mbcl4=",
+=======
+  "dgSpecHash": "F9Uws52VLuI=",
+>>>>>>> Stashed changes
   "success": true,
-  "projectFilePath": "D:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
+  "projectFilePath": "C:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.5\\microsoft.aspnetcore.authentication.jwtbearer.10.0.5.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.3.9\\microsoft.aspnetcore.identity.2.3.9.nupkg.sha512",
@@ -31,11 +35,19 @@
     {
       "code": "NU1510",
       "level": "Warning",
+<<<<<<< Updated upstream
       "message": "PackageReference Microsoft.AspNetCore.Identity will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
       "projectPath": "D:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
       "warningLevel": 1,
       "filePath": "D:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
       "libraryId": "Microsoft.AspNetCore.Identity",
+=======
+      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: Pomelo.EntityFrameworkCore.MySql 9.0.0 requiere Microsoft.EntityFrameworkCore.Relational (>= 9.0.0 && <= 9.0.999), pero la versión Microsoft.EntityFrameworkCore.Relational 10.0.5 ya se resolvió.",
+      "projectPath": "C:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Javier\\Uni\\PI\\subsonicApi\\subsonicApi.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore.Relational",
+>>>>>>> Stashed changes
       "targetGraphs": [
         "net10.0"
       ]
