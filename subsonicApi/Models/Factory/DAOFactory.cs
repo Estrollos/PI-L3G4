@@ -15,6 +15,4 @@ public class DAOFactory : IDAOFactory {
     public INewDAO CreateNewDAO() => new NewDAO(_context);
     public IProductDAO CreateProductDAO() => new ProductDAO(_context);
     public ISpaceDAO CreateSpaceDAO() => new SpaceDAO(_context);
-    public IStallDAO CreateStallDAO() => new StallDAO(_context);
-    public ITicketDAO CreateTicketDAO() => new TicketDAO(_context);
 }

@@ -10,11 +10,11 @@ public class SpaceDAO : ISpaceDAO
     }
 
     public async Task<List<SpaceDTO>> GetAll() {
-        return await _context.Spaces.ToListAsync();
+        return await _context.Spaces.Include(x => x.Tipos).ToListAsync();
     }
 
     public async Task<SpaceDTO> GetById(int id) {
-        return await _context.Spaces.FindAsync(id);
+        return await _context.Spaces.Include(x => x.Tipos).FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task Update(SpaceDTO dto) {

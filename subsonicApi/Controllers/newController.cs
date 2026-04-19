@@ -12,16 +12,16 @@ public class NewController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<EventDTO>>> GetAll() {
-        var eventos = await _model.GetAll();
-        return Ok(eventos);
+    public async Task<ActionResult<List<NewsDTO>>> GetAll() {
+        var news = await _model.GetAll();
+        return Ok(news);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EventDTO>> GetById(int id) {
-        var evento = await _model.GetById(id);
-        if (evento == null) 
+    public async Task<ActionResult<NewsDTO>> GetById(int id) {
+        var news = await _model.GetById(id);
+        if (news == null) 
             return NotFound();
-        return Ok(evento);
+        return Ok(news);
     }
 }

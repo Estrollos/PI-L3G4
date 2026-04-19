@@ -12,6 +12,8 @@ namespace subsonicApi.Data
             builder.Property(x => x.Id).HasColumnName("id");
             builder.Property(x => x.ProductoId).HasColumnName("producto_id");
             builder.Property(x => x.Url).HasColumnName("url");
+
+            builder.HasOne(x => x.Producto).WithMany(x => x.Imagenes).HasForeignKey(x => x.ProductoId);
         }
     }
 }

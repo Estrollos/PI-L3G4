@@ -18,6 +18,9 @@ namespace subsonicApi.Data
             builder.Property(x => x.Direccion).HasColumnName("direccion");
             builder.Property(x => x.Tlf).HasColumnName("tlf");
             builder.Property(x => x.Rol).HasColumnName("rol");
+
+            builder.HasMany(x => x.ComprasProductos).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId);
+            builder.HasMany(x => x.ComprasEventos).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId);
         }   
     }
 }

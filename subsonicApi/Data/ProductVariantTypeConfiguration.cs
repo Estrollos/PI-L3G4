@@ -14,6 +14,8 @@ namespace subsonicApi.Data
             builder.Property(x => x.Color).HasColumnName("color");
             builder.Property(x => x.Talla).HasColumnName("talla");
             builder.Property(x => x.Stock).HasColumnName("stock");
+
+            builder.HasOne(x => x.Producto).WithMany(x => x.Variantes).HasForeignKey(x => x.ProductoId);
         }
     }
 }

@@ -10,15 +10,15 @@ public class ClientDAO : IClientDAO
     }
 
     public async Task<List<ClientDTO>> GetAll() {
-        return await _context.Clients.ToListAsync();
+        return await _context.Clients.Include(x => x.ComprasProductos).Include(x => x.ComprasEventos).ToListAsync();
     }
 
     public async Task<ClientDTO> GetById(int id) {
-        return await _context.Clients.FindAsync(id);
+        return await _context.Clients.Include(x => x.ComprasProductos).Include(x => x.ComprasEventos).FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<ClientDTO> GetByEmail(string email) {
-        return await _context.Clients.FirstOrDefaultAsync(x => x.Email == email);
+        return await _context.Clients.Include(x => x.ComprasProductos).Include(x => x.ComprasEventos).FirstOrDefaultAsync(x => x.Email == email);
     }
     public async Task Create(ClientDTO dto) {
         _context.Clients.Add(dto);

@@ -25,7 +25,7 @@ namespace subsonicApi
                 new (JwtRegisteredClaimNames.Sub, client.Id.ToString()),
                 new (JwtRegisteredClaimNames.Email, client.Email),
                 new (ClaimTypes.Name, client.Nombre),
-                new (ClaimTypes.Role, client.Rol)
+                new (ClaimTypes.Role, client.Rol.ToString())
             };
 
             var token = new JwtSecurityToken(

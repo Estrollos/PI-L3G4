@@ -15,11 +15,11 @@ namespace subsonicApi.Data
             builder.Property(x => x.Dia).HasColumnName("dia");
             builder.Property(x => x.Hora).HasColumnName("hora");
             builder.Property(x => x.Info).HasColumnName("info");
-            builder.Property(x => x.UrlImg).HasColumnName("url_img");
+            builder.Property(x => x.UrlImg).HasColumnName("urlImg");
             builder.Property(x => x.NEntradas).HasColumnName("nEntradas");
             builder.Property(x => x.PrecioEntradas).HasColumnName("precioEntradas");
 
-            builder.HasMany(x => x.Artistas).WithMany(x => x.Evento).HasForeignKey(x => x.EventoId);
+            builder.HasMany(x => x.Artistas).WithOne(x => x.Evento).HasForeignKey(x => x.EventoId);
         }
     }
 }

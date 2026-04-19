@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize (Roles = "Proveedor")]
 public class SpaceController : ControllerBase {
     private readonly SpaceModel _model;
 

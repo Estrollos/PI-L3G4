@@ -11,7 +11,7 @@ namespace subsonicApi.Data
 
             builder.Property(x => x.Id).HasColumnName("id");
             builder.Property(x => x.Url).HasColumnName("url");
-            builder.Property(x => x.UrlImg).HasColumnName("url_img");
+            builder.Property(x => x.UrlImg).HasColumnName("urlImg");
             builder.Property(x => x.Escenario).HasColumnName("escenario");
         }
     }

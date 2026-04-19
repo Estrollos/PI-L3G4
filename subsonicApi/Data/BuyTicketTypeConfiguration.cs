@@ -12,9 +12,12 @@ namespace subsonicApi.Data
 
             builder.Property(x => x.Id).HasColumnName("id");
             builder.Property(x => x.ClienteId).HasColumnName("cliente_id");
-            builder.Property(x => x.EntradaId).HasColumnName("entrada_id");
+            builder.Property(x => x.EventoId).HasColumnName("evento_id");
             builder.Property(x => x.Cantidad).HasColumnName("cantidad");
             builder.Property(x => x.FechaCompra).HasColumnName("fecha_compra");
+
+            builder.HasOne(x => x.Cliente).WithMany(x => x.ComprasEventos).HasForeignKey(x => x.ClienteId);
+            builder.HasOne(x => x.Evento).WithMany().HasForeignKey(x => x.EventoId);
         }
     }
 }

@@ -10,6 +10,8 @@ namespace subsonicApi.Data
 
             builder.Property(x => x.EspacioId).HasColumnName("espacio_id");
             builder.Property(x => x.Tipo).HasColumnName("tipo");
+
+            builder.HasOne(x => x.Espacio).WithMany(x => x.Tipos).HasForeignKey(x => x.EspacioId);
         }
     }
 }

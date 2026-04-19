@@ -1,5 +1,6 @@
 using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -38,9 +39,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+.AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true; // Optional: for better readability
+    });
 builder.Services.AddEndpointsApiExplorer();
-/*builder.Services.AddSwaggerGen(options =>
+builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
@@ -66,7 +72,7 @@ builder.Services.AddEndpointsApiExplorer();
         new OpenApiSecuritySchemeReference(JwtBearerDefaults.AuthenticationScheme, document)
         ] = Array.Empty<string>().ToList()
     });
-});*/
+});
 
 builder.Services.AddCors(options =>
 {
@@ -75,11 +81,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-/*app.UseSwagger();
+app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "subsonicApi");
-});*/
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

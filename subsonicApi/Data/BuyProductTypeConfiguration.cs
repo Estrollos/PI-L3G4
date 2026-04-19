@@ -15,6 +15,9 @@ namespace subsonicApi.Data
             builder.Property(x => x.ProductoVarianteId).HasColumnName("producto_variante_id");
             builder.Property(x => x.Cantidad).HasColumnName("cantidad");
             builder.Property(x => x.FechaCompra).HasColumnName("fecha_compra");
+
+            builder.HasOne(x => x.Cliente).WithMany(x => x.ComprasProductos).HasForeignKey(x => x.ClienteId);
+            builder.HasOne(x => x.ProductoVariante).WithMany().HasForeignKey(x => x.ProductoVarianteId);
         }
     }
-}
+}   

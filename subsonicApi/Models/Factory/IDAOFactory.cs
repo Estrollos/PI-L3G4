@@ -9,6 +9,4 @@ public interface IDAOFactory {
     INewDAO CreateNewDAO();
     IProductDAO CreateProductDAO();
     ISpaceDAO CreateSpaceDAO();
-    IStallDAO CreateStallDAO();
-    ITicketDAO CreateTicketDAO();
 }
