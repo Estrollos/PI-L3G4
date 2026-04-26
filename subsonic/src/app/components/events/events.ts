@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Tickets } from './tickets/tickets';
 import { DateCom } from './date/dateCom';
 

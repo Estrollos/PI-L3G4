@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Event } from '../../../models/event';
 import { NgOptimizedImage } from "@angular/common";
 import { Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterConstants } from '../../../constants/router-constants';
+import { EventService } from '../../../../services/event-services';
 
 @Component({
   selector: 'app-tickets',
@@ -21,34 +22,11 @@ export class Tickets {
   navToTicket() : void{
     this.router.navigate([RouterConstants.TICKET]);
   }
-
-  events: Event[] = [
-    { date: 'Monday', hour: 'Morning', stage: 'Main Stage' },
-    { date: 'Monday', hour: 'Afternoon', stage: 'Main Stage' },
-    { date: 'Monday', hour: 'Night', stage: 'Main Stage' },
-    { date: 'Monday', hour: 'Morning', stage: 'Second Stage' },
-    { date: 'Monday', hour: 'Afternoon', stage: 'Second Stage' },
-    { date: 'Monday', hour: 'Night', stage: 'Second Stage' },
-    { date: 'Monday', hour: 'Morning', stage: 'Third Stage' },
-    { date: 'Monday', hour: 'Afternoon', stage: 'Third Stage' },
-    { date: 'Monday', hour: 'Night', stage: 'Third Stage' },
-    { date: 'Tuesday', hour: 'Morning', stage: 'Main Stage' },
-    { date: 'Tuesday', hour: 'Afternoon', stage: 'Main Stage' },
-    { date: 'Tuesday', hour: 'Night', stage: 'Main Stage' },
-    { date: 'Tuesday', hour: 'Morning', stage: 'Second Stage' },
-    { date: 'Tuesday', hour: 'Afternoon', stage: 'Second Stage' },
-    { date: 'Tuesday', hour: 'Night', stage: 'Second Stage' },
-    { date: 'Tuesday', hour: 'Morning', stage: 'Third Stage' },
-    { date: 'Tuesday', hour: 'Afternoon', stage: 'Third Stage' },
-    { date: 'Tuesday', hour: 'Night', stage: 'Third Stage' },
-    { date: 'Wednesday', hour: 'Morning', stage: 'Main Stage' },
-    { date: 'Wednesday', hour: 'Afternoon', stage: 'Main Stage' },
-    { date: 'Wednesday', hour: 'Night', stage: 'Main Stage' },
-    { date: 'Wednesday', hour: 'Morning', stage: 'Second Stage' },
-    { date: 'Wednesday', hour: 'Afternoon', stage: 'Second Stage' },
-    { date: 'Wednesday', hour: 'Night', stage: 'Second Stage' },
-    { date: 'Wednesday', hour: 'Morning', stage: 'Third Stage' },
-    { date: 'Wednesday', hour: 'Afternoon', stage: 'Third Stage' },
-    { date: 'Wednesday', hour: 'Night', stage: 'Third Stage' },
-  ];
+  events: any [] = [];
+  EventService = inject(EventService);
+  contructor(){
+    this.EventService.getAll().subscribe( events => {
+      this.events = events;
+    })
+  }
 }
