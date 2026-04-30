@@ -1,3 +1,5 @@
+import { ArtistModel } from './artistModel';
+
 export interface EventModel {
   id: number;
   escenario: number;
@@ -8,4 +10,5 @@ export interface EventModel {
   urlImg: string;
   nEntradas: number;
   precioEntradas: number;
+  artistas: any;
 }

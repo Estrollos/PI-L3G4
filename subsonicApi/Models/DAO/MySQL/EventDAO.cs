@@ -13,7 +13,7 @@ public class EventDAO : IEventDAO {
     }
 
     public async Task<EventDTO> GetById(int id) {
-        return await _context.Events.Include(x => x.Artistas).FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Events.Include(x => x.Artistas).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task Update(EventDTO dto) {

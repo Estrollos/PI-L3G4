@@ -1,10 +1,10 @@
 <h1>Login</h1>
 <div class="container">
   <h2>Email</h2>
-  <input type ="email"/>
+  <input type ="email" [(ngModel)]="email"/>
   <h2>Password</h2>
-  <input type ="password"/>
+  <input type ="password" [(ngModel)]="contrasena"/>
   <p>Forgot your password? <a (click)="navToForgotPassword()"> Click here</a></p>
   <p>Don't you have an account? <a (click)="navToCreateAccount()"> Create account </a></p>
-  <button>Login</button>
+  <button (click)="login()">Login</button>
 </div>

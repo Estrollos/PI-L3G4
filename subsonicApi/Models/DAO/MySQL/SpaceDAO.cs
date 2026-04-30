@@ -14,7 +14,7 @@ public class SpaceDAO : ISpaceDAO
     }
 
     public async Task<SpaceDTO> GetById(int id) {
-        return await _context.Spaces.Include(x => x.Tipos).FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Spaces.Include(x => x.Tipos).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task Update(SpaceDTO dto) {

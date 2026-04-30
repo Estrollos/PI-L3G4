@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "subsonicApi", "subsonicApi.csproj", "{6732B957-25AD-F8AF-1F78-D34C01A93807}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6732B957-25AD-F8AF-1F78-D34C01A93807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6732B957-25AD-F8AF-1F78-D34C01A93807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6732B957-25AD-F8AF-1F78-D34C01A93807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6732B957-25AD-F8AF-1F78-D34C01A93807}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D170B6F9-2E37-4E45-9197-0CB18EE76D92}
+	EndGlobalSection
+EndGlobal

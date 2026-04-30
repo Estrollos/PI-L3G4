@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { EventModel } from '../../../models/event';
+import { EventModel } from '../../../models/eventModel';
 import { NgOptimizedImage } from '@angular/common';
 import { Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,8 +20,8 @@ export class Tickets {
 
   constructor(private router: Router) {}
 
-  navToTicket(): void {
-    this.router.navigate([RouterConstants.TICKET]);
+  navToTicket(id: number): void {
+    this.router.navigate([RouterConstants.TICKET, id]);
   }
 
   events: EventModel[] = [];
@@ -35,7 +35,7 @@ export class Tickets {
     });
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     switch (this.day) {
       case 'Monday':
         this.dia = 1;
@@ -46,6 +46,7 @@ export class Tickets {
       case 'Wednesday':
         this.dia = 3;
         break;
+      default: this.dia = 0;
     }
 
     switch (this.hour) {
@@ -58,6 +59,46 @@ export class Tickets {
       case 'Night':
         this.hora = 3;
         break;
+      default: this.hora = 0;
+    }
+  }
+
+  selectDay(day: number): string {
+    switch (day) {
+      case 1:
+        return 'Monday';
+      case 2:
+        return 'Tuesday';
+      case 3:
+        return 'Wednesday';
+      default:
+        return '';
+    }
+  }
+
+  selectHour(hora: number): string {
+    switch (hora) {
+      case 1:
+        return 'Morning';
+      case 2:
+        return 'Afternoon';
+      case 3:
+        return 'Night';
+      default:
+        return '';
+    }
+  }
+
+  selectStage(escenario: number): string {
+    switch (escenario) {
+      case 1:
+        return 'Main Stage';
+      case 2:
+        return 'Second Stage';
+      case 3:
+        return 'Third Stage';
+      default:
+        return '';
     }
   }
 }

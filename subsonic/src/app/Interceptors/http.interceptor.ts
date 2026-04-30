@@ -9,7 +9,7 @@ export function httpInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) 
   const platformId = inject(PLATFORM_ID);
 
   if (isPlatformBrowser(platformId)) {
-    const token = sessionStorage.getItem('auth_token');
+    const token = sessionStorage.getItem('token');
 
     if (token) {
       const newReq = req.clone({

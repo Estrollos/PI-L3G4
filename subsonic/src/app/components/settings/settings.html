@@ -1,20 +1,21 @@
 <h1>Settings</h1>
-
+@if(client){
 <div class="container">
-  <label> Name: Javier </label>
-  <input type ="text"/>
+  <label> Name: {{client.nombre}}</label>
+  <input type ="text"  [(ngModel)] = "nombre"/>
 
-  <label>Surnames: Borox Gonzalez </label>
-  <input type ="text"/>
+  <label>Surnames: {{client.apellido}}</label>
+  <input type ="text"  [(ngModel)] = "apellidos"/>
 
-  <label>Email: fboroxgo@alumnos.unex.es </label>
-  <input type ="email"/>
+  <label>Email: {{client.email}}</label>
+  <input type ="email"  [(ngModel)] = "email"/>
 
-  <label>Address: C/Pepito 22 2ºA </label>
-  <input type ="text"/>
+  <label>Address: {{client.direccion}}</label>
+  <input type ="text"  [(ngModel)] = "direccion"/>
 
-  <label>Tlf.: XXX-XX-XX-XX </label>
-  <input type ="text"/>
+  <label>Tlf.: {{client.tlf}}</label>
+  <input type ="text"  [(ngModel)] = "telefono"/>
 
-  <button>Save</button>
+  <button (click) = "changeProfile()">Save</button>
 </div>
+}

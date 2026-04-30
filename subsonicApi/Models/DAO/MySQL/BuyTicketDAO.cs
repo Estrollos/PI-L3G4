@@ -14,7 +14,7 @@ public class BuyTicketDAO : IBuyTicketDAO
     }
 
     public async Task<BuyTicketDTO> GetById(int id) {
-        return await _context.BuyTickets.FindAsync(id);
+        return await _context.BuyTickets.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
     
     public async Task Create(BuyTicketDTO dto) {

@@ -30,6 +30,15 @@ public class ClientController : ControllerBase {
             return NotFound();
         return Ok(cliente);
     }
+
+    [HttpGet("email/{email}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<ClientDTO>> GetByEmail(string email) {
+        var cliente = await _model.GetByEmail(email);
+        if (cliente == null) 
+            return NotFound();
+        return Ok(cliente);
+    }
     
     [HttpPost("register")]
     [AllowAnonymous]
@@ -51,13 +60,16 @@ public class ClientController : ControllerBase {
         if(!isPasswordValid)
             return Unauthorized("invalid credentials");
         var accessToken = _jwt.CreateAccessToken(client);
-        return Ok(accessToken);
+        return Ok(new { AccessToken = accessToken, Nombre = client.Nombre, Id = client.Id});
     }
 
     [HttpPut]
+    [AllowAnonymous]
     public async Task<IActionResult> Update(ClientDTO dto) {
         if(dto == null)
             return BadRequest();
+        if(!string.IsNullOrEmpty(dto.Contrasena))
+            dto.Contrasena = _passwordHasher.HashPassword(dto, dto.Contrasena);
         await _model.Update(dto);
         return Ok(dto); 
     }

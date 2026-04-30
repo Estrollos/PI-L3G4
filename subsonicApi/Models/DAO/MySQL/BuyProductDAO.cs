@@ -13,7 +13,7 @@ public class BuyProductDAO : IBuyProductDAO {
     }
 
     public async Task<BuyProductDTO> GetById(int id) {
-        return await _context.BuyProducts.FindAsync(id);
+        return await _context.BuyProducts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task Create(BuyProductDTO dto) {

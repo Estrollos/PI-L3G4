@@ -14,7 +14,6 @@ public class ClientModel {
             throw new Exception("Cliente no encontrado");
         return cliente;
     }
-
     public async Task<ClientDTO> GetByEmail(string email){
          var cliente = await _clientDAO.GetByEmail(email);
          if (cliente == null)
