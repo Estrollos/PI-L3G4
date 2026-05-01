@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NewsModel } from '../../models/newsModel';
 import { NewsService } from '../../../services/news-services';
 import { ActivatedRoute } from '@angular/router';
@@ -14,10 +14,13 @@ export class News {
   news: NewsModel | null = null;
   private route = inject(ActivatedRoute);
 
+  constructor(private chRef: ChangeDetectorRef) {}
+
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.NewsService.getById(id).subscribe((data) => {
       this.news = data;
+      this.chRef.detectChanges();
     });
   }
 }

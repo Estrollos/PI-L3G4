@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductModel, ProductVariantModel } from '../../models/productModel';
 import { ProductService } from '../../../services/product-services';
@@ -12,11 +12,14 @@ import { BuyProductService } from '../../../services/buyProduct-services';
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
-
 export class Product {
-  size:string = "";
-  color:string ="";
-  talla:number = 0;
+  size: string = '';
+  color: string = '';
+  talla: number = 0;
+
+  selectTypes: any[] = [];
+
+  selectedType: any = null;
 
   constructor(private chRef: ChangeDetectorRef) {}
 
@@ -26,13 +29,14 @@ export class Product {
     }
   }
 
-  toggleColor(value:string){
-    if(this.color === value){
+  toggleColor(value: string) {
+    if (this.color === value) {
       this.color = '';
     }
+    this.selectedType = this.selectTypes.find((t) => t.productColor === value);
   }
 
-  selectTalla(talla: number) : string{
+  selectTalla(talla: number): string {
     switch (talla) {
       case 1:
         return 'S';
@@ -59,12 +63,13 @@ export class Product {
     this.ProductService.getById(Number(id)).subscribe((product) => {
       this.product = { ...product } as ProductModel;
       this.product.variants = [...product.variantes.$values] as ProductVariantModel[];
+      this.selectTypes = this.fillSelectTypes(this.product.variants);
       this.chRef.detectChanges();
     });
   }
 
   Buy(): void {
-    switch(this.size){
+    switch (this.size) {
       case 'S':
         this.talla = 1;
         break;
@@ -84,20 +89,35 @@ export class Product {
         this.talla = 0;
     }
 
-    const variant = this.product?.variants.find(v => v.color === this.color && v.talla === this.talla);
-    if(!variant){
+    const variant = this.product?.variants.find(
+      (v) => v.color === this.color && v.talla === this.talla,
+    );
+    if (!variant) {
       return;
     }
     variant.stock = variant.stock - 1;
-    if(this.product){
-      this.ProductService.update(this.product).subscribe(() =>{
+    if (this.product) {
+      this.ProductService.update(this.product).subscribe(() => {
         this.BuyProductService.create({
           clienteId: Number(sessionStorage.getItem('id')),
           productoVarianteId: variant.id,
-          fechaCompra: new Date()
+          fechaCompra: new Date(),
         }).subscribe();
         this.chRef.detectChanges();
       });
     }
+  }
+
+  private fillSelectTypes(variants: ProductVariantModel[]): any[] {
+    const output: any[] = [];
+
+    variants.forEach((element) => {
+      if (!output.some((e) => e.productColor === element.color)) {
+        var tallas = variants.filter((v) => v.color === element.color).map((v) => v.talla);
+        output.push({ productColor: element.color, tallas: tallas });
+      }
+    });
+
+    return output;
   }
 }

@@ -27,4 +27,8 @@ export class BuyProductService {
   public create(client: BuyProductModel) : Observable<any>{
     return this.http.post(this.apiUrl, client);
   }
+
+  public delete(id: number) : Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

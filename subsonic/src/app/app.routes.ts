@@ -24,6 +24,7 @@ export const routes: Routes = [
   { path: RouterConstants.STORE, component: Store },
   { path: RouterConstants.FAQ, component: FAQ },
   { path: RouterConstants.NEWS, component: News },
+  { path: RouterConstants.NEWS_DETAIL, component: News },
   { path: RouterConstants.TICKET, component: Ticket },
   { path: RouterConstants.TICKET_DETAIL, component: Ticket },
   { path: RouterConstants.FORGOT_PASSWORD, component: RecoverPass },

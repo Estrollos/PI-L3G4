@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NgOptimizedImage } from "@angular/common";
 import { BuyProductModel } from '../../models/buyProductModel';
 import { BuyProductService } from '../../../services/buyProduct-services';
@@ -20,6 +20,8 @@ export class Cart {
   private ProductVariantService  = inject(ProductVariantService );
   private ProductService  = inject(ProductService );
 
+  constructor(private chRef: ChangeDetectorRef) {}
+
   ngOnInit() {
     const clienteId = Number(sessionStorage.getItem('id'));
     this.BuyProductService.getByClienteId(clienteId).subscribe((data) => {
@@ -30,9 +32,20 @@ export class Cart {
             this.ProductService.getById(variante.productoId).subscribe((product) => {
                 this.products.push(product);
                 this.precioTotal += product.precio;
+                this.chRef.detectChanges();
               });
           });
         }
       });
+  }
+
+  deleteProducts() {
+    this.cart.forEach((item) => {
+      this.BuyProductService.delete(item.id!).subscribe();
+      this.chRef.detectChanges();
+    });
+
+    this.products = [];
+    this.precioTotal = 0;
   }
 }

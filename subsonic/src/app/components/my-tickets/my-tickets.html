@@ -1,38 +1,33 @@
 <h1>My Tickets</h1>
 
 <div class="tabs">
-  <input type="radio" id="NextEvents" name="option" value="NextEvents" [(ngModel)]="option">
+  <input type="radio" id="NextEvents" name="option" value="NextEvents" [(ngModel)]="option" />
   <label for="NextEvents">NextEvents</label>
 
-  <input type="radio" id="PastEvents" name="option" value="PastEvents" [(ngModel)]="option">
+  <input type="radio" id="PastEvents" name="option" value="PastEvents" [(ngModel)]="option" />
   <label for="PastEvents">PastEvents</label>
 </div>
 
 @if (option === 'NextEvents') {
-  @for(event of events; track event.id) {
-    @if(event.fecha < currentDate) {
-      <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
-        <img src="/concierto.png" alt="evento">
-        <div class="ticket-date">
-          <p>{{event.dia}}</p>
-          <p>{{event.hora}}</p>
-        </div>
-        <p class="ticket-name">{{event.escenario}}</p>
-      </a>
-    }
+  @for (item of nextEvents; track item.event.id) {
+    <a href="/ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
+      <img src="/concierto.png" alt="evento" />
+      <div class="ticket-date">
+        <p>{{ selectDay(item.event.dia) }}</p>
+        <p>{{ selectHour(item.event.hora) }}</p>
+      </div>
+      <p class="ticket-name">{{ selectStage(item.event.escenario) }}</p>
+    </a>
   }
-}
-@else if (option === 'PastEvents') {
-  @for(event of events; track event.id) {
-    @if(event.fecha >= currentDate) {
-      <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
-        <img src="/concierto.png" alt="evento">
-        <div class="ticket-date">
-          <p>{{event.dia}}</p>
-          <p>{{event.hora}}</p>
-        </div>
-        <p class="ticket-name">{{event.escenario}}</p>
-      </a>
-    }
+} @else if (option === 'PastEvents') {
+  @for (item of pastEvents; track item.event.id) {
+    <a href="/ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
+      <img src="/concierto.png" alt="evento" />
+      <div class="ticket-date">
+        <p>{{ selectDay(item.event.dia) }}</p>
+        <p>{{ selectHour(item.event.hora) }}</p>
+      </div>
+      <p class="ticket-name">{{ selectStage(item.event.escenario) }}</p>
+    </a>
   }
 }

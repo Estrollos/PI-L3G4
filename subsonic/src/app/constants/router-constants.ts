@@ -5,6 +5,7 @@ export class RouterConstants {
   static STORE: string = 'store';
   static FAQ: string = 'faq';
   static NEWS: string = 'news';
+  static NEWS_DETAIL: string = 'news/:id';
   static TICKET: string = 'ticket';
   static TICKET_DETAIL: string = 'ticket/:id';
   static FORGOT_PASSWORD: string = 'forgot-password';

@@ -13,19 +13,15 @@
     <p>{{ product.precio }}€</p>
     <p>{{ product.info }}</p>
     <p>Color</p>
-    @for(productVariant of product.variants; track productVariant.id) {
-      @if(productVariant.stock > 0){
-        <input type="radio" id="{{ productVariant.color }}" name="color" value="{{ productVariant.color }}" [(ngModel)]="color" (ngModelChange)="color" (click)="toggleColor(productVariant.color)">
-        <label for="{{ productVariant.color }}">{{ productVariant.color }}</label>
-      }
+    @for(type of selectTypes; track type.productColor) {
+      <input type="radio" id="{{ type.productColor }}" name="color" value="{{ type.productColor }}" [(ngModel)]="color" (ngModelChange)="color" (click)="toggleColor(type.productColor)">
+      <label for="{{ type.productColor }}">{{ type.productColor }}</label>
     }
 
     <p>Size</p>
-    @for(productVariant of product.variants; track productVariant.id) {
-      @if(productVariant.stock > 0){
-        <input type="radio" id="{{ selectTalla(productVariant.talla) }}" name="size" value="{{ selectTalla(productVariant.talla) }}" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize(selectTalla(productVariant.talla))">
-        <label for="{{ selectTalla(productVariant.talla) }}">{{ selectTalla(productVariant.talla) }}</label>
-      }
+    @for(talla of selectedType?.tallas; track talla) {
+      <input type="radio" id="{{ selectTalla(talla) }}" name="size" value="{{ selectTalla(talla) }}" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize(selectTalla(talla))">
+      <label for="{{ selectTalla(talla) }}">{{ selectTalla(talla) }}</label>
     }
 
     <p></p>
