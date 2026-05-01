@@ -1,13 +1,15 @@
-@if(event){
+@if (event) {
   <div class="text">
-    <h1>TICKET</h1>
-    <h2>{{ selectStage(event.escenario) }}</h2>
-    <h2>{{ event.fecha }}</h2>
-    <h2>Descripcion</h2>
-    <p>{{ event.info }}</p>
-    <h2>Artist</h2>
-    @for (artista of event.artistas; track artista.id) {
-      <p>{{ artista.nombre }}</p>
+    @if (eventLoaded) {
+      <h1>TICKET</h1>
+      <h2>{{ selectStage(event.escenario) }}</h2>
+      <h2>{{ event.fecha }}</h2>
+      <h2>Descripcion</h2>
+      <p>{{ event.info }}</p>
+      <h2>Artist</h2>
+      @for (artista of event.artistas; track artista.id) {
+        <p>{{ artista.nombre }}</p>
+      }
     }
     <h2>Stalls</h2>
     @for (espacio of spaces; track espacio.id) {

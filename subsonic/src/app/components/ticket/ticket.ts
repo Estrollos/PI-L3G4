@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterConstants } from '../../constants/router-constants';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../services/event-services';
 import { SpaceService } from '../../../services/space-services';
-import { EventModel } from '../../models/eventModel';
+import { ArtistModel, EventModel } from '../../models/eventModel';
 import { SpaceModel } from '../../models/spaceModel';
 import { BuyTicketService } from '../../../services/buyTicket-services';
 import { BuyTicketModel } from '../../models/buyTicketModel';
@@ -15,19 +15,24 @@ import { BuyTicketModel } from '../../models/buyTicketModel';
   templateUrl: './ticket.html',
   styleUrl: './ticket.css',
 })
-export class Ticket{
+export class Ticket {
   quantity: number = 1;
   message: string = '';
 
-  constructor(private router: Router) {}
+  eventLoaded: boolean = false;
 
-  plus() : void{
+  constructor(
+    private router: Router,
+    private chRef: ChangeDetectorRef,
+  ) {}
+
+  plus(): void {
     this.quantity++;
   }
 
-  minus() : void{
-    if(this.quantity > 1){
-       this.quantity--;
+  minus(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
     }
   }
 
@@ -36,7 +41,7 @@ export class Ticket{
   }
 
   navToLogin(): void {
-    if (!this.event){
+    if (!this.event) {
       return;
     }
     if (this.quantity > this.event.nEntradas) {
@@ -47,14 +52,14 @@ export class Ticket{
       clienteId: Number(sessionStorage.getItem('id')),
       eventoId: this.event.id,
       cantidad: this.quantity,
-      fechaCompra: new Date()
+      fechaCompra: new Date(),
     };
     this.event.nEntradas -= this.quantity;
 
     this.BuyTicketService.create(ticket).subscribe(() =>
       this.EventService.update(this.event!).subscribe(() =>
-        this.router.navigate([RouterConstants.HOME])
-      )
+        this.router.navigate([RouterConstants.HOME]),
+      ),
     );
   }
 
@@ -70,12 +75,16 @@ export class Ticket{
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.EventService.getById(id).subscribe((event) => {
-        this.event = event;
-      });
+      this.event = { ...event } as EventModel;
+      this.event.artistas = [...event.artistas.$values] as ArtistModel[];
+      this.eventLoaded = true;
+      this.chRef.detectChanges();
+    });
 
     this.SpaceService.getAll().subscribe((space) => {
-        this.spaces = space.$values;
-      });
+      this.spaces = space.$values;
+      this.chRef.detectChanges();
+    });
   }
 
   selectStage(escenario: number): string {

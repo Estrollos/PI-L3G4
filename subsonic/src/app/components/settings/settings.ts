@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../../services/client-services';
 import { ClientModel } from '../../models/clientModel';
@@ -19,10 +19,13 @@ export class Settings {
   ClientService = inject(ClientService);
   client: ClientModel | null = null;
 
+  constructor(private chRef: ChangeDetectorRef) {}
+
   ngOnInit(): void {
     const id = Number(sessionStorage.getItem('id'));
     this.ClientService.getById(id).subscribe((client) => {
       this.client = client;
+      this.chRef.detectChanges();
     });
   }
 
@@ -35,6 +38,7 @@ export class Settings {
         client.direccion = this.direccion;
         client.tlf = this.telefono;
         this.ClientService.update(client).subscribe();
+        this.chRef.detectChanges();
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NgOptimizedImage } from "@angular/common";
 import { Router } from '@angular/router';
@@ -14,7 +14,9 @@ import { ProductService } from '../../../services/product-services';
 })
 export class Store{
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private chRef: ChangeDetectorRef
+  ) {}
 
   navToProduct(id: number) : void{
     this.router.navigate([RouterConstants.PRODUCT, id]);
@@ -26,6 +28,7 @@ export class Store{
   ngOnInit() {
     this.ProductService.getAll().subscribe((data) => {
       this.products = data.$values;
+      this.chRef.detectChanges();
     });
   }
 }

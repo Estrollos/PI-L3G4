@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { EventModel } from '../../../models/eventModel';
 import { NgOptimizedImage } from '@angular/common';
 import { Input } from '@angular/core';
@@ -18,7 +18,9 @@ export class Tickets {
   dia: number = 0;
   hora: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private chRef: ChangeDetectorRef
+  ) {}
 
   navToTicket(id: number): void {
     this.router.navigate([RouterConstants.TICKET, id]);
@@ -28,11 +30,10 @@ export class Tickets {
   EventService = inject(EventService);
 
   ngAfterViewInit() {
-    setTimeout(() => {
       this.EventService.getAll().subscribe((events) => {
         this.events = events.$values;
+        this.chRef.detectChanges();
       });
-    });
   }
 
   ngOnChanges() {

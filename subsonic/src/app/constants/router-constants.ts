@@ -15,6 +15,7 @@ export class RouterConstants {
   static MY_TICKETS: string = 'my-tickets';
   static CART: string = 'cart';
   static PRODUCT: string = 'product';
+  static PRODUCT_DETAIL: string = 'product/:id';
   static SPACES: string = 'spaces';
   static STALL_INFO: string = 'stall-info';
 }

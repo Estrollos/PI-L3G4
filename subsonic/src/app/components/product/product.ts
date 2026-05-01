@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NgOptimizedImage } from "@angular/common";
 import { FormsModule } from '@angular/forms';
-import { ProductModel } from '../../models/productModel';
+import { ProductModel, ProductVariantModel } from '../../models/productModel';
 import { ProductService } from '../../../services/product-services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BuyProductService } from '../../../services/buyProduct-services';
@@ -17,6 +17,8 @@ export class Product {
   size:string = "";
   color:string ="";
   talla:number = 0;
+
+  constructor(private chRef: ChangeDetectorRef) {}
 
   toggleSize(value: string) {
     if (this.size === value) {
@@ -55,7 +57,9 @@ export class Product {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.ProductService.getById(Number(id)).subscribe((product) => {
-      this.product = product;
+      this.product = { ...product } as ProductModel;
+      this.product.variants = [...product.variantes.$values] as ProductVariantModel[];
+      this.chRef.detectChanges();
     });
   }
 
@@ -92,6 +96,7 @@ export class Product {
           productoVarianteId: variant.id,
           fechaCompra: new Date()
         }).subscribe();
+        this.chRef.detectChanges();
       });
     }
   }

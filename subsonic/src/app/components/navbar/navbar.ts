@@ -15,8 +15,8 @@ export class Navbar {
   nombre: string | null = null;
   rol: number = 0;
 
-  ngOnInit() {
-    this.nombre = sessionStorage.getItem('nombre');
+  ngAfterViewInit() {
+    this.nombre = sessionStorage.getItem('name');
     this.rol = Number(sessionStorage.getItem('rol'));
   }
 

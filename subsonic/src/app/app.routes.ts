@@ -34,6 +34,7 @@ export const routes: Routes = [
   { path: RouterConstants.MY_TICKETS, component: MyTickets },
   { path: RouterConstants.CART, component: Cart },
   { path: RouterConstants.PRODUCT, component: Product },
+  { path: RouterConstants.PRODUCT_DETAIL, component: Product },
   { path: RouterConstants.SPACES, component: Spaces },
   { path: RouterConstants.STALL_INFO, component: StallInfo }
 ];

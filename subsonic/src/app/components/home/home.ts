@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { NgOptimizedImage } from "@angular/common";
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterConstants } from '../../constants/router-constants';
 import { EventModel } from '../../models/eventModel';
@@ -16,7 +16,7 @@ import { ProductService } from '../../../services/product-services';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit {
   events: EventModel[] = [];
   news: NewsModel[] = [];
   musics: MusicModel[] = [];
@@ -27,24 +27,27 @@ export class Home {
   private MusicService = inject(MusicService);
   private ProductService = inject(ProductService);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private chRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.EventService.getAll().subscribe((data) =>
-      this.events = data.$values.slice(0, 3)
-    );
+    this.EventService.getAll().subscribe((data) => {
+      this.events = data.$values.slice(0, 3);
+      this.chRef.detectChanges();
+    });
 
-    this.NewsService.getAll().subscribe((data) =>
-      this.news = data.$values.slice(0, 3)
-    );
+    this.NewsService.getAll().subscribe((data) =>{
+      this.news = data.$values.slice(0, 3);
+      this.chRef.detectChanges(); });
 
-    this.MusicService.getAll().subscribe((data) =>
-      this.musics = data.$values.slice(0, 3)
-    );
+    this.MusicService.getAll().subscribe((data) => {
+      this.musics = data.$values.slice(0, 3);
+      this.chRef.detectChanges(); });
 
-    this.ProductService.getAll().subscribe((data) =>
-      this.products = data.$values.slice(0, 3)
-    );
+    this.ProductService.getAll().subscribe((data) => {
+      this.products = data.$values.slice(0, 3);
+      this.chRef.detectChanges(); });
   }
 
   navToTicket(id: number): void {
