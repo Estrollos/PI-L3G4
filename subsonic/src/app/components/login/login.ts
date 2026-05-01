@@ -31,6 +31,7 @@ export class Login {
         sessionStorage.setItem('token', client.accessToken);
         sessionStorage.setItem('name', client.nombre);
         sessionStorage.setItem('id', client.id);
+        sessionStorage.setItem('rol', client.rol)
         this.router.navigate([RouterConstants.HOME]);
       });
   }

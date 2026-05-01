@@ -22,4 +22,12 @@ public class ProductController : ControllerBase {
             return NotFound();
         return Ok(product);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> Update(ProductDTO dto) {
+        if(dto == null)
+            return BadRequest();
+        await _model.Update(dto);
+        return Ok(dto); 
+    }
 }

@@ -24,7 +24,13 @@ public class BuyProductController : ControllerBase {
             return NotFound();
         return Ok(producto);
     }
-    
+
+    [HttpGet("cliente/{clienteId}")]
+    public async Task<IActionResult> GetByClienteId(int clienteId) {
+        var compras = await _model.GetByClienteId(clienteId);
+        return Ok(compras);
+    }
+
     [HttpPost]
     public async Task<ActionResult<BuyProductDTO>> Create(BuyProductDTO dto) {
         if(dto == null)

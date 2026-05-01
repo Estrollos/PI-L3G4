@@ -1,42 +1,35 @@
-<div class="left">
-  <img ngSrc="/camisaL.webp" width="500" height="600">
-  <img ngSrc="/camisaC.webp" width="500" height="600">
-  <div class="front">
-    <img ngSrc="/camisaL_frente.webp" width="500" height="600">
-    <img ngSrc="/camisaC_frente.jpg" width="500" height="600">
+@if(product){
+  <div class="left">
+    <img ngSrc="/camisaL.webp" width="500" height="600">
+    <img ngSrc="/camisaC.webp" width="500" height="600">
+    <div class="front">
+      <img ngSrc="/camisaL_frente.webp" width="500" height="600">
+      <img ngSrc="/camisaC_frente.jpg" width="500" height="600">
+    </div>
   </div>
-  <h2>Similar Products</h2>
-</div>
 
-<div class="right">
-  <h1>T-Shirt</h1>
-  <p>20€</p>
-  <p>Description</p>
-  <p>Color</p>
+  <div class="right">
+    <h1>{{ product.nombre }}</h1>
+    <p>{{ product.precio }}€</p>
+    <p>{{ product.info }}</p>
+    <p>Color</p>
+    @for(productVariant of product.variants; track productVariant.id) {
+      @if(productVariant.stock > 0){
+        <input type="radio" id="{{ productVariant.color }}" name="color" value="{{ productVariant.color }}" [(ngModel)]="color" (ngModelChange)="color" (click)="toggleColor(productVariant.color)">
+        <label for="{{ productVariant.color }}">{{ productVariant.color }}</label>
+      }
+    }
 
-  <input type="radio" id="Black" name="color" value="Black" [(ngModel)]="color" (ngModelChange)="color" (click)="toggleColor('Black')">
-  <label for="Black">Black</label>
+    <p>Size</p>
+    @for(productVariant of product.variants; track productVariant.id) {
+      @if(productVariant.stock > 0){
+        <input type="radio" id="{{ selectTalla(productVariant.talla) }}" name="size" value="{{ selectTalla(productVariant.talla) }}" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize(selectTalla(productVariant.talla))">
+        <label for="{{ selectTalla(productVariant.talla) }}">{{ selectTalla(productVariant.talla) }}</label>
+      }
+    }
 
-  <input type="radio" id="White" name="color" value="White" [(ngModel)]="color" (ngModelChange)="color" (click)="toggleColor('White')">
-  <label for="White">White</label>
-
-  <p>Size</p>
-  <input type="radio" id="S" name="size" value="S" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize('S')">
-  <label for="S">S</label>
-
-  <input type="radio" id="M" name="size" value="M" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize('M')">
-  <label for="M">M</label>
-
-  <input type="radio" id="L" name="size" value="L" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize('L')">
-  <label for="L">L</label>
-
-  <input type="radio" id="XL" name="size" value="XL" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize('XL')">
-  <label for="XL">XL</label>
-
-  <input type="radio" id="XXL" name="size" value="XXL" [(ngModel)]="size" (ngModelChange)="size" (click)="toggleSize('XLL')">
-  <label for="XXL">XXL</label>
-
-  <p></p>
-  <button>Add to Cart</button>
-  <p>Delivey time 2-4 business days</p>
-</div>
+    <p></p>
+    <button (click) = "Buy()">Add to Cart</button>
+    <p>Delivey time 2-4 business days</p>
+  </div>
+}

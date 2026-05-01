@@ -9,15 +9,30 @@
 </div>
 
 @if (option === 'NextEvents') {
-  <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
-    <img src="/concierto.png" alt="evento">
-    <div class="ticket-date">
-      <p>MON</p>
-      <p>NIGHT</p>
-    </div>
-    <p class="ticket-name">Main Stage</p>
-  </a>
+  @for(event of events; track event.id) {
+    @if(event.fecha < currentDate) {
+      <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
+        <img src="/concierto.png" alt="evento">
+        <div class="ticket-date">
+          <p>{{event.dia}}</p>
+          <p>{{event.hora}}</p>
+        </div>
+        <p class="ticket-name">{{event.escenario}}</p>
+      </a>
+    }
+  }
 }
 @else if (option === 'PastEvents') {
-  <p>You don't have any old entries</p>
+  @for(event of events; track event.id) {
+    @if(event.fecha >= currentDate) {
+      <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf" class="ticket-card">
+        <img src="/concierto.png" alt="evento">
+        <div class="ticket-date">
+          <p>{{event.dia}}</p>
+          <p>{{event.hora}}</p>
+        </div>
+        <p class="ticket-name">{{event.escenario}}</p>
+      </a>
+    }
+  }
 }

@@ -4,7 +4,7 @@
   <h2>Information about the stall</h2>
 
   <h3>Name of the stall</h3>
-  <input type="text">
+  <input type="text" [(ngModel)] = "nombre">
 
   <h2>Service Type</h2>
   <input type="checkbox" id="Food" value="Food" (change)="onCheck('Food', $event)">
@@ -17,7 +17,10 @@
   <label for="Merchandising">Merchandising</label>
 
   <h3>Description of the stall</h3>
-  <textarea></textarea>
+  <textarea [(ngModel)]="info"></textarea>
 
-  <button>CONFIRM</button>
+  @if(message){
+    <p>{{message}}</p>
+  }
+  <button (click) = "confirm()">CONFIRM</button>
 </div>

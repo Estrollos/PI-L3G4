@@ -16,6 +16,14 @@ public class BuyProductModel {
             throw new Exception("Producto no encontrado");
         return producto;
     }
+
+    public async Task<List<BuyProductDTO>> GetByClienteId(int clienteId) {
+        var compra = await _buyProductDAO.GetByClienteId(clienteId);
+        if (compra == null)
+            throw new Exception("Compra no encontradas");
+        return compra;
+    }
+
     public async Task Create(BuyProductDTO dto) => await _buyProductDAO.Create(dto);
 
     public async Task Update(BuyProductDTO dto) {

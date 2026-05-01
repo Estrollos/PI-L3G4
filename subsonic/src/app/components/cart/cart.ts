@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from "@angular/common";
+import { BuyProductModel } from '../../models/buyProductModel';
+import { BuyProductService } from '../../../services/buyProduct-services';
+import { ProductVariantService  } from '../../../services/productVariant-services';
+import { ProductService }  from '../../../services/product-services';
+import { ProductModel } from '../../models/productModel';
 
 @Component({
   selector: 'app-cart',
@@ -8,9 +13,26 @@ import { NgOptimizedImage } from "@angular/common";
   styleUrl: './cart.css',
 })
 export class Cart {
-  products = [
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-  ]
+  precioTotal: number = 0;
+  cart: BuyProductModel[] = [];
+  products: ProductModel[] = [];
+  private BuyProductService = inject(BuyProductService);
+  private ProductVariantService  = inject(ProductVariantService );
+  private ProductService  = inject(ProductService );
+
+  ngOnInit() {
+    const clienteId = Number(sessionStorage.getItem('id'));
+    this.BuyProductService.getByClienteId(clienteId).subscribe((data) => {
+        this.cart = data.$values;
+
+        for(let compra of this.cart){
+          this.ProductVariantService.getById(compra.productoVarianteId).subscribe((variante) => {
+            this.ProductService.getById(variante.productoId).subscribe((product) => {
+                this.products.push(product);
+                this.precioTotal += product.precio;
+              });
+          });
+        }
+      });
+  }
 }

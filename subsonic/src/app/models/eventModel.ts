@@ -1,4 +1,8 @@
-import { ArtistModel } from './artistModel';
+export interface ArtistModel {
+  id: number;
+  eventoId: number;
+  nombre: string;
+}
 
 export interface EventModel {
   id: number;
@@ -10,5 +14,5 @@ export interface EventModel {
   urlImg: string;
   nEntradas: number;
   precioEntradas: number;
-  artistas: any;
+  artistas: ArtistModel[];
 }

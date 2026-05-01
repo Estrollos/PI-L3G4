@@ -16,6 +16,13 @@ public class BuyTicketModel {
             throw new Exception("Entrada no encontrado");
         return ticket;
     }
+
+    public async Task<List<BuyTicketDTO>> GetByClienteId(int clienteId) {
+        var tickets = await _buyTicketDAO.GetByClienteId(clienteId);
+        if (tickets == null)
+            throw new Exception("Entradas no encontradas");
+        return tickets;
+    }
     public async Task Create(BuyTicketDTO dto) => await _buyTicketDAO.Create(dto);
 
     public async Task Update(BuyTicketDTO dto) {

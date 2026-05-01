@@ -16,6 +16,12 @@ public class BuyProductDAO : IBuyProductDAO {
         return await _context.BuyProducts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    public async Task<List<BuyProductDTO>> GetByClienteId(int clienteId) {
+        return await _context.BuyProducts.AsNoTracking()
+            .Where(c => c.ClienteId == clienteId)
+            .ToListAsync();
+    }
+    
     public async Task Create(BuyProductDTO dto) {
         _context.BuyProducts.Add(dto);
         await _context.SaveChangesAsync();

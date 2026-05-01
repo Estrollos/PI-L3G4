@@ -2,14 +2,14 @@
 
 <button class="filter-button"><mat-icon>tune</mat-icon>FILTER</button>
 <div class="products-row">
-  @for(product of products; track product.name + product.image + product.price){
+  @for(product of products; track product.id){
     <div class="product">
-      <img [ngSrc]="product.image" width="300" height="400" (click)="navToProduct()">
+      <img ngSrc="/camisaL.webp" width="300" height="400" (click)="navToProduct(product.id)">
       <div class="text">
-        <p>{{product.name}}</p>
-        <div class="price"><p>{{product.price}}€</p></div>
+        <p>{{product.nombre}}</p>
+        <div class="price"><p>{{product.precio}}€</p></div>
       </div>
-      <button class="buy-button" (click)="navToProduct()">Buy</button>
+      <button class="buy-button" (click)="navToProduct(product.id)">Buy</button>
     </div>
   }
 </div>

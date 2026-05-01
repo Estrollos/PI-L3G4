@@ -9,10 +9,31 @@ import { NgOptimizedImage } from "@angular/common";
   styleUrl: './navbar.css',
   imports: [NgOptimizedImage]
 })
-export class NavbarComponent {
-
+export class Navbar {
   isOpen = false;
-  isSubmenuOpen  = false;
+  isSubmenuOpen = false;
+  nombre: string | null = null;
+  rol: number = 0;
+
+  ngOnInit() {
+    this.nombre = sessionStorage.getItem('nombre');
+    this.rol = Number(sessionStorage.getItem('rol'));
+  }
+
+  isLoggedIn(): boolean {
+    return this.nombre !== null;
+  }
+
+  isProveedor(): boolean {
+    return this.rol === 2;
+  }
+
+  logOut(): void {
+    sessionStorage.clear();
+    this.nombre = null;
+    this.rol = 0;
+    this.router.navigate([RouterConstants.HOME]);
+  }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;

@@ -6,15 +6,19 @@
     <li><a (click)="navToEvents()">EVENTS</a></li>
     <li><a (click)="navToStore()">STORE</a></li>
     <li><a (click)="navToFAQ()">FAQ</a></li>
-    <div class="my-account">
-      <li><a (click)="navToLogin()">MY ACCOUNT</a></li>
-    </div>
-      <li><div class="dropdown">
-        <span (click)="toggleMenu()">ACCOUNT ▾</span>
+    @if(!isLoggedIn()) {
+      <div class="my-account">
+        <li><a (click)="navToLogin()">MY ACCOUNT</a></li>
+      </div>
+    }
+    @else{
+        <li><div class="dropdown">
+        <span (click)="toggleMenu()">{{ nombre }} ▾</span>
         @if (isOpen) {
         <div class="menu">
-          <p>Javier</p>
+          <p>{{ nombre }}</p>
             <p (click)="selectOption('Settings')" (click)="navToSetting()">Settings</p>
+          @if(isProveedor()) {
             <div class="submenu-container">
               <p (click)="toggleSubmenu()">Services ▸</p>
               @if (isSubmenuOpen) {
@@ -23,12 +27,14 @@
                   <p (click)="selectOption('StallInfo')" (click)="navToStallInfo()">Stall Info</p>
                 </div>
               }
-  </div>
+            </div>
+          }
           <p (click)="selectOption('MyCart')" (click)="navToMyCart()">My-Cart</p>
           <p (click)="selectOption('MyTickets')" (click)="navToMyTickets()">My-Tickets</p>
-          <p>Log-Out</p>
+          <p (click)="logOut()">Log-Out</p>
         </div>
         }
     </div></li>
+    }
   </ul>
 </nav>

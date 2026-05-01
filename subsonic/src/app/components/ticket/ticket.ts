@@ -6,6 +6,8 @@ import { EventService } from '../../../services/event-services';
 import { SpaceService } from '../../../services/space-services';
 import { EventModel } from '../../models/eventModel';
 import { SpaceModel } from '../../models/spaceModel';
+import { BuyTicketService } from '../../../services/buyTicket-services';
+import { BuyTicketModel } from '../../models/buyTicketModel';
 
 @Component({
   selector: 'app-ticket',
@@ -15,6 +17,7 @@ import { SpaceModel } from '../../models/spaceModel';
 })
 export class Ticket{
   quantity: number = 1;
+  message: string = '';
 
   constructor(private router: Router) {}
 
@@ -33,8 +36,29 @@ export class Ticket{
   }
 
   navToLogin(): void {
-    this.router.navigate([RouterConstants.HOME]);
+    if (!this.event){
+      return;
+    }
+    if (this.quantity > this.event.nEntradas) {
+      this.message = 'No hay suficientes entradas disponibles';
+      return;
+    }
+    const ticket: BuyTicketModel = {
+      clienteId: Number(sessionStorage.getItem('id')),
+      eventoId: this.event.id,
+      cantidad: this.quantity,
+      fechaCompra: new Date()
+    };
+    this.event.nEntradas -= this.quantity;
+
+    this.BuyTicketService.create(ticket).subscribe(() =>
+      this.EventService.update(this.event!).subscribe(() =>
+        this.router.navigate([RouterConstants.HOME])
+      )
+    );
   }
+
+  private BuyTicketService = inject(BuyTicketService);
 
   event: EventModel | null = null;
   private route = inject(ActivatedRoute);

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NgOptimizedImage } from "@angular/common";
 import { Router } from '@angular/router';
 import { RouterConstants } from '../../constants/router-constants';
+import { ProductModel } from '../../models/productModel';
+import { ProductService } from '../../../services/product-services';
 
 @Component({
   selector: 'app-store',
@@ -10,20 +12,20 @@ import { RouterConstants } from '../../constants/router-constants';
   templateUrl: './store.html',
   styleUrl: './store.css',
 })
-export class Store {
+export class Store{
 
   constructor(private router: Router) {}
 
-  navToProduct() : void{
-    this.router.navigate([RouterConstants.PRODUCT]);
+  navToProduct(id: number) : void{
+    this.router.navigate([RouterConstants.PRODUCT, id]);
   }
 
-  products = [
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-    { name: 'T-Shirt', price: 20, image: '/camisaL.webp' },
-  ];
+  private ProductService = inject(ProductService);
+  products: ProductModel[] = [];
+
+  ngOnInit() {
+    this.ProductService.getAll().subscribe((data) => {
+      this.products = data.$values;
+    });
+  }
 }

@@ -17,4 +17,10 @@ public class ProductModel
             throw new Exception("Producto no encontrado");
         return product;
     }
+    public async Task Update(ProductDTO dto) {
+        var existe = await _productDAO.GetById(dto.Id);
+        if (existe == null)
+            throw new Exception("Producto no encontrado");
+        await _productDAO.Update(dto);
+    }
 }

@@ -60,7 +60,7 @@ public class ClientController : ControllerBase {
         if(!isPasswordValid)
             return Unauthorized("invalid credentials");
         var accessToken = _jwt.CreateAccessToken(client);
-        return Ok(new { AccessToken = accessToken, Nombre = client.Nombre, Id = client.Id});
+        return Ok(new { AccessToken = accessToken, Nombre = client.Nombre, Id = client.Id, Rol = client.Rol});
     }
 
     [HttpPut]

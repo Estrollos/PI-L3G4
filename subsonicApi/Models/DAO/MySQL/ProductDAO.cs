@@ -14,6 +14,11 @@ public class ProductDAO : IProductDAO
     }
 
     public async Task<ProductDTO> GetById(int id) {
-        return await _context.Products.Include(x => x.Imagenes).Include(x => x.Variantes).FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Products.Include(x => x.Imagenes).Include(x => x.Variantes).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public async Task Update(ProductDTO dto) {
+        _context.Products.Update(dto);
+        await _context.SaveChangesAsync();
     }
 }

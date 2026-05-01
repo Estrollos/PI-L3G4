@@ -26,9 +26,12 @@
         <button (click)="minus()">-</button>
       </div>
       <p>Price: {{ getPrice(event.precioEntradas) }}€</p>
-      <button class="buy" (click)="navToLogin()">
+      <button class="Buy" (click)="navToLogin()">
         <a href="subsonic\public\ENTRADA.pdf" download="entrada.pdf">Buy</a>
       </button>
+      @if (message) {
+        <p>{{ message }}</p>
+      }
     </div>
   </div>
 }
